@@ -1,0 +1,31 @@
+﻿<Window x:Class="TestXmlAnalytics.View.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TestXmlAnalytics.View"
+        mc:Ignorable="d"
+        Title="XML-Аналитик" MinHeight="450" MinWidth="800" 
+        WindowStartupLocation="CenterScreen">
+    <Grid>
+        <StackPanel Margin="10">
+            <Button Content="Выбрать XML файл" 
+                    Width="200" Margin="0 10 0 10"/>
+
+            <TextBlock Text="Количество элементов:" FontWeight="Bold"/>
+            <TextBox IsReadOnly="True" Margin="0 0 0 10"/>
+
+            <TextBlock Text="Имена элементов:" FontWeight="Bold"/>
+            <TextBox  IsReadOnly="True" Margin="0 0 0 10"/>
+
+            <TextBlock Text="Сумма атрибутов:" FontWeight="Bold"/>
+            <DataGrid Height="200" Margin="0 5 0 5">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Номер"/>
+                    <DataGridTextColumn Header="Атрибут"/>
+                    <DataGridTextColumn Header="Количество"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </StackPanel>
+    </Grid>
+</Window>
