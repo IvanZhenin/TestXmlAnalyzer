@@ -4,26 +4,34 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TestXmlAnalytics.View"
+        xmlns:vm="clr-namespace:TestXmlAnalytics.ViewModel"
         mc:Ignorable="d"
         Title="XML-Аналитик" MinHeight="450" MinWidth="800" 
         WindowStartupLocation="CenterScreen">
+    <Window.DataContext>
+        <vm:AnalyticSerivceViewModel/>
+    </Window.DataContext>
     <Grid>
         <StackPanel Margin="10">
             <Button Content="Выбрать XML файл" 
+                    Command="{Binding ChooseFilePath, UpdateSourceTrigger=PropertyChanged}"
                     Width="200" Margin="0 10 0 10"/>
 
             <TextBlock Text="Количество элементов:" FontWeight="Bold"/>
-            <TextBox IsReadOnly="True" Margin="0 0 0 10"/>
+            <TextBox IsReadOnly="True" Margin="0 0 0 10" 
+                     Text="{Binding ElementCount, Mode=OneWay}"/>
 
             <TextBlock Text="Имена элементов:" FontWeight="Bold"/>
-            <TextBox  IsReadOnly="True" Margin="0 0 0 10"/>
 
-            <TextBlock Text="Сумма атрибутов:" FontWeight="Bold"/>
-            <DataGrid Height="200" Margin="0 5 0 5">
+            <ListBox ItemsSource="{Binding ElementNames, Mode=OneWay}" 
+                     MinHeight="50"/>
+
+           <TextBlock Text="Сумма атрибутов:" FontWeight="Bold"/>
+            <DataGrid Height="200" Margin="0 5 0 5" AutoGenerateColumns="False" IsReadOnly="True"
+                      ItemsSource="{Binding AttributeSum, Mode=OneWay}">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Номер"/>
-                    <DataGridTextColumn Header="Атрибут"/>
-                    <DataGridTextColumn Header="Количество"/>
+                    <DataGridTextColumn Header="Атрибут" Binding="{Binding Key}"/>
+                    <DataGridTextColumn Header="Количество" Binding="{Binding Value}"/>
                 </DataGrid.Columns>
             </DataGrid>
         </StackPanel>

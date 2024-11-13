@@ -1,6 +1,8 @@
-﻿namespace TestXmlAnalytics.Utilities
+﻿using System.Windows.Input;
+
+namespace TestXmlAnalytics.Utilities
 {
-    public class RelayCommand
+    public class RelayCommand : ICommand
     {
         private readonly Action<object> _execute;
         private readonly Predicate<object> _canExecute;
