@@ -9,6 +9,9 @@ namespace TestXmlAnalytics.Model
 
 		public override void GetFile(string path)
 		{
+			if (path == "")
+				return;
+
 			try
 			{
 				FileContent = XDocument.Load(path);
