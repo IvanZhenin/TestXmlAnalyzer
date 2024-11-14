@@ -1,4 +1,5 @@
-﻿using Microsoft.Win32;
+﻿using System.IO;
+using Microsoft.Win32;
 using System.Windows;
 using System.Windows.Input;
 using System.Xml.Linq;
@@ -24,15 +25,15 @@ namespace TestXmlAnalytics.ViewModel
 			{
 				if (FilePath != value)
 				{
-					_filePath = value;
-					_fileService.GetFile(value);
+					_filePath = _fileService.GetFile(value);
+					OnPropertyChanged(nameof(FilePath));
 					OnPropertyChanged(nameof(ElementCount));
 					OnPropertyChanged(nameof(ElementNames));
 					OnPropertyChanged(nameof(AttributeSum));
 				}
 			}
 		}
-
+		
 		public long ElementCount
 		{
 			get

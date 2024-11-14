@@ -12,10 +12,14 @@
         <vm:AnalyticSerivceViewModel/>
     </Window.DataContext>
     <Grid>
-        <StackPanel Margin="10">
+        <StackPanel Margin="10" Orientation="Vertical">
             <Button Content="Выбрать XML файл" 
                     Command="{Binding ChooseFilePath, UpdateSourceTrigger=PropertyChanged}"
                     Width="200" Margin="0 10 0 10"/>
+
+            <TextBlock Text="Файл:" FontWeight="Bold"/>
+            <TextBox Text="{Binding FilePath, Mode=OneWay}" IsReadOnly="True"
+                     Margin="0 0 0 10"/>
 
             <TextBlock Text="Количество элементов:" FontWeight="Bold"/>
             <TextBox IsReadOnly="True" Margin="0 0 0 10" 

@@ -7,19 +7,21 @@ namespace TestXmlAnalytics.Model
 	{
 		protected XDocument? FileContent;
 
-		public override void GetFile(string path)
+		public override string GetFile(string path)
 		{
 			if (path == "")
-				return;
+				return "";
 
 			try
 			{
 				FileContent = XDocument.Load(path);
+				return path;
 			}
 			catch (Exception ex)
 			{
 				MessageBox.Show($"Ошибка при загрузке файла: {ex.Message}");
 				FileContent = null;
+				return "";
 			}
 		}
 
