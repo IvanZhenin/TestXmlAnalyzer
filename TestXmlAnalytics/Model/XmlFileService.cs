@@ -5,7 +5,7 @@ namespace TestXmlAnalytics.Model
 {
 	public class XmlFileService : FileService<XDocument>
 	{
-		protected XDocument? FileContent;
+		protected new XDocument? FileContent;
 
 		public override string GetFile(string path)
 		{
